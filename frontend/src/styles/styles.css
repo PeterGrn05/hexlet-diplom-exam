@@ -1,0 +1,1310 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: inherit;
+}
+
+button,
+input,
+textarea,
+span
+select {
+	font-family: 'Roboto', Arial, sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+label {
+	font-family: 'Roboto', Arial, sans-serif;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.input-error {
+	border: 2px solid red !important;
+}
+
+/* фон */
+.body-bg {
+	background-image: url(../img/userbg.png);
+	background-color: #000000;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+
+.admin-body-bg {
+	background-image: url(../img/adminbg.png);
+	background-color: #000000;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.admin-body-bg::after {
+
+	content: "";
+	background-color: #000000;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	height: 100%;
+}
+
+/* Основные стили главной страницы */
+.content-wrapper {
+	padding: 0 18.5%;
+}
+
+.header {
+	box-sizing: border-box;
+	max-width: 990px;
+	padding: 14px;
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-other-pages {
+	cursor: pointer
+}
+
+.header-logo {
+	margin: 0;
+	font-size: 34px;
+	color: #FFFFFF;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.header-logo-thin {
+	font-weight: 100;
+}
+
+.button {
+	border-radius: 3px;
+	border: none;
+	background: #16A6AF;
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24);
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.button:hover {
+	background: #1BBCC6;
+	cursor: pointer;
+}
+
+.button:active {
+	background: #16A6AF;
+}
+
+.header-button {
+	padding: 12px;
+}
+
+.header-button-hidden {
+	display: none;
+}
+
+.nav {
+	max-width: 990px;
+	height: 52px;
+	margin: 0 auto 40px auto;
+}
+
+.nav-list {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+}
+
+.nav-item {
+	display: flex;
+	align-items: left;
+	justify-content: center;
+	flex-direction: column;
+
+	width: calc(100%/8);
+	margin-left: 1px;
+	padding: 10px 20px;
+	border-radius: 2px;
+	background-color: rgba(255, 255, 255, 0.9);
+
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.nav-item:first-child {
+	margin-left: 0;
+}
+
+.nav-item:hover {
+	background-color: #ffffff;
+	cursor: pointer;
+}
+
+.nav-item-active {
+	width: calc((100%/8)*2);
+	margin-left: 0;
+	padding: 8px 22px;
+	background-color: #ffffff;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.nav-item-red {
+	color: #FF0000;
+}
+
+.date-switch {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 28px;
+}
+
+.client-index {
+	max-width: 990px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.movie {
+	padding: 15px 15px 26px 15px;
+	border-radius: 2px;
+
+	background-color: rgba(241, 235, 230, 0.95);
+}
+
+.movie-info {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+}
+
+.movie-image {
+	width: 125px;
+	height: 175px;
+	display: block;
+}
+
+.movie-description {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.movie-title {
+	margin: 0 0 0 -15px;
+	display: flex;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.movie-title::before {
+	content: '';
+	display: inline-block;
+	width: 6px;
+	height: 14px;
+	margin: 0 8px 0 1px;
+
+	background-color: #393939;
+}
+
+.movie-synopsis {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.movie-data {
+	display: flex;
+	flex-direction: row;
+	gap: 3px;
+
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.movie-schedule {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.movie-halls {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.movie-halls-title {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.movie-halls-times {
+	list-style-type: none;
+
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+}
+
+.movie-halls-time {
+	padding: 7px;
+	border-radius: 2px;
+	color: #000000;
+	background-color: #ffffff;
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+}
+
+.movie-halls-time:hover {
+	background-color: #EBEBEB;
+	cursor: pointer;
+}
+
+.movie-halls-time-disabled {
+	background-color: #848484;
+}
+
+.movie-halls-time-disabled:hover {
+	background-color: #848484;
+	cursor: not-allowed;
+}
+
+/* страница для бронировки мест */
+
+.client-hall-wrapper {
+	max-width: 990px;
+	margin: 0 auto;
+
+	background-color: rgba(241, 235, 230, 0.95);
+	border-radius: 2px;
+}
+
+.session-info {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+
+	padding: 15px;
+}
+
+.zoomed-hand {
+	display: none;
+}
+
+.session-title {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.session-time {
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.session-hall {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.hall {
+	padding-top: 45px;
+	padding-bottom: 13px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	background-color: rgba(23, 29, 36, 1);
+	background-image: url(../img/screen.png);
+	background-position: top 15px center;
+	background-repeat: no-repeat;
+	background-size: 284px auto;
+}
+
+.hall-grid {
+	margin: 0 auto;
+	display: grid;
+	gap: 4px;
+}
+
+.hall-seat {
+	box-sizing: border-box;
+	width: 20px;
+	height: 20px;
+	border-radius: 4px;
+}
+
+.seat-free {
+	border: 1px solid #525252;
+	background-color: #FFFFFF;
+}
+
+.hall-grid .seat-free:hover {
+	transform: scale(1.2);
+}
+
+.seat-occupied {
+	border: 1px solid #525252;
+}
+
+.seat-vip {
+	border: 1px solid #525252;
+	background-color: #F9953A;
+}
+
+.hall-grid .seat-vip:hover {
+	transform: scale(1.2);
+}
+
+.hall-seat-chosen {
+	transform: scale(1.2);
+	border: 1px solid #525252;
+	background-color: #25C4CE;
+	box-shadow: 0px 0px 4px 0px #16A6AF;
+}
+
+.hall-legend {
+	width: 284px;
+	margin: 0 auto;
+	padding: 0 10px;
+	box-sizing: border-box;
+
+	display: flex;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.legend-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.legend-item {
+	display: flex;
+	gap: 4px;
+}
+
+.legend-label {
+	font-size: 14px;
+	font-weight: 300;
+	font-family: 'Roboto', Arial, sans-serif;
+	color: #FFFFFF;
+}
+
+.booking {
+	padding: 30px 0;
+}
+
+.booking-button {
+	display: block;
+	margin: 0 auto;
+	padding: 11px 61px 13px 61px;
+}
+
+
+/* страница оплаты */
+
+.payment {
+	max-width: 990px;
+	margin: 0 auto;
+}
+
+.payment-header {
+	position: relative;
+	padding: 25px 15px;
+	box-sizing: border-box;
+	background-color: rgba(241, 235, 230, 0.95);
+}
+
+.payment-header::after {
+	content: '';
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	right: 0;
+
+	display: block;
+	height: 3px;
+
+	background-image: url(../img/bottomticketseam.png);
+}
+
+.payment-header::before {
+	content: '';
+	position: absolute;
+	top: -3px;
+	left: 0;
+	right: 0;
+
+	display: block;
+	height: 3px;
+
+	background-image: url(../img/topticketseam.png);
+}
+
+.payment-title {
+	text-transform: uppercase;
+
+	font-size: 22px;
+	font-weight: 700;
+	color: #C76F00;
+}
+
+.ticket-info {
+	position: relative;
+
+	padding: 20px 15px 30px 15px;
+	margin-top: 6px;
+
+	background-color: rgba(241, 235, 230, 0.95);
+}
+
+.ticket-info::after {
+	content: '';
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	right: 0;
+
+	display: block;
+	height: 3px;
+
+	background-image: url(../img/bottomticketseam.png);
+}
+
+.ticket-info::before {
+	content: '';
+	position: absolute;
+	top: -3px;
+	left: 0;
+	right: 0;
+
+	display: block;
+	height: 3px;
+
+	background-image: url(../img/topticketseam.png);
+}
+
+
+.ticket-info-text-value {
+	font-weight: 500;
+}
+
+
+.ticket-button {
+	display: block;
+	margin: 0 auto;
+	padding: 11px 61px 13px 61px;
+
+	background-color: #16A6AF;
+	box-shadow: 0px 3px 3px 0px #0000003D;
+}
+
+.ticket-button:hover {
+	background-color: #277c82;
+
+}
+
+.ticket-hint {
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.ticket-info-hint:nth-last-of-type(n+2) {
+	margin-bottom: 10px;
+}
+
+.ticket-qr {
+	display: flex;
+	justify-content: center;
+	margin: 30px auto;
+}
+
+/* основные свойства для входа в админскую */
+
+.content-wrapper-admin {
+	position: relative;
+	z-index: 2;
+	padding: 0 20.3%;
+}
+
+.admin-header {
+	padding: 35px 99px;
+}
+
+.admin-header-subtitle {
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: 400;
+	letter-spacing: 5px;
+	color: #FFFFFF;
+}
+
+.login-wrapper {
+	max-width: 480px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+
+	background-color: rgba(234, 233, 235, 0.95);
+}
+
+.login-header {
+	padding: 16px 0;
+
+	background-color: #63536C;
+}
+
+.login-title {
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 35px 104px;
+}
+
+.login-label {
+	font-size: 12px;
+	font-weight: 400;
+	color: #848484;
+	align-self: flex-start;
+}
+
+.login-input {
+	width: 100%;
+	padding: 7px 9px 9px 9px;
+	box-sizing: border-box;
+	margin-bottom: 7px;
+	border-radius: 0;
+	border: 1px solid #B7B7B7;
+
+	font-size: 16px;
+	font-weight: 400;
+	color: #757575;
+}
+
+.login-button {
+	padding: 11px 35px 12px 36px;
+}
+
+
+/* Админская страница */
+
+.manage {
+	margin: auto;
+	max-width: 962px;
+}
+
+.section-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #63536C;
+	font-family: 'Roboto', Arial, sans-serif;
+	max-height: 95px;
+}
+
+.section-header::before {
+	content: '';
+	box-sizing: border-box;
+	width: 44px;
+	height: 44px;
+	border: 4px solid #BC95D6;
+	border-radius: 50%;
+	background-color: #fff;
+	margin: 26px 20px 25px 40px;
+	z-index: 2;
+}
+
+.section-header::after {
+	content: '';
+	position: absolute;
+	align-self: flex-end;
+	background-color: #BC95D6;
+	height: 48px;
+	width: 2px;
+	margin-left: 61px;
+	z-index: 1;
+}
+
+.section-title {
+	text-transform: uppercase;
+	margin-right: auto;
+	font-size: 22px;
+	font-weight: 700;
+	color: white;
+}
+
+.section-header-button {
+	margin-right: 40px;
+	width: 24px;
+	height: 16px;
+	border: none;
+	background-color: #63536C;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url(../img/arrowdown.png);
+}
+
+.section-text {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.manage-content {
+	position: relative;
+	background-color: rgba(234, 233, 235, 0.95);
+	color: #000000;
+	padding-left: 104px;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+
+.manage-content::before {
+	content: '';
+	position: absolute;
+	background-color: #BC95D6;
+	height: 100%;
+	width: 2px;
+	left: 61px;
+	top: 0;
+}
+
+.admin-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding-top: 20px
+}
+
+.admin-button {
+	margin: 0;
+	text-align: center;
+	background-color: #16A6AF;
+	color: #fff;
+	padding: 11px 32px;
+	border: none;
+	cursor: pointer;
+}
+
+.admin-button:hover {
+	background-color: #277c82;
+}
+
+.admin-white-button {
+	margin: 0;
+	text-align: center;
+	padding: 11px 32px;
+	background-color: #FFFFFF;
+	color: #63536C;
+	border: none;
+	cursor: pointer;
+}
+
+.white-button:hover {
+	background-color: #63536C;
+	color: #FFFFFF;
+}
+
+.admin-halls-list {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 14px 11px;
+
+	font-size: 16px;
+	font-weight: 500;
+
+	text-transform: uppercase;
+}
+
+.admin-halls-list-item {
+	display: flex;
+	flex-direction: row;
+	gap: 3px;
+}
+
+.admin-halls-list-item::before {
+	content: '–';
+}
+
+.admin-halls-button {
+	margin: auto;
+	text-align: center;
+	background-color: #16A6AF;
+	color: #fff;
+	padding: 11px 32px;
+	border: none;
+	cursor: pointer;
+}
+
+.admin-halls-button:hover {
+	background-color: #277c82;
+}
+
+.admin-text {
+	margin: 20px auto;
+}
+
+
+.admin-delete-button {
+	width: 20px;
+	height: 20px;
+
+	border: none;
+	border-radius: 3px;
+	background-color: #FFFFFF;
+	background-image: url(../img/cancel.png);
+	background-size: 24px 12px;
+	background-position: top 4px left 5px;
+	background-repeat: no-repeat;
+
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24);
+}
+
+.admin-delete-button:hover {
+	background-color: #63536C;
+	background-position: top 4px right 5px;
+	cursor: pointer;
+}
+
+.admin-delete-button-halls {
+	height: 20px;
+	width: 20px;
+	background-image: url(../img/remove.png);
+	background-size: contain;
+	border: none;
+	left: -25px;
+	top: 40px;
+}
+
+.input-container {
+	margin-top: 11px;
+	display: flex;
+	gap: 14px;
+	align-items: center;
+}
+
+.input-wrapper {
+	display: flex;
+	flex-direction: row; 
+	align-items: center; 
+	gap: 8px;
+}
+
+.admin-label {
+	font-size: 12px;
+	font-weight: 400;
+	color: #848484;
+}
+
+.admin-input {
+	padding: 7px;
+	width: 100px;
+	box-sizing: border-box;
+	border: 1px solid #B7B7B7;
+	border-radius: 0;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.switch-hall-buttons {
+	display: flex;
+	margin-top: 12px;
+}
+
+.switch-hall-button {
+	padding: 12px 21px 13px 21px;
+	border: none;
+	border-radius: 3px;
+	align-self: center;
+
+	background-color: rgba(255, 255, 255, 0.45);
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.24);
+
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.switch-hall-button:hover {
+	background-color: #FFFFFF;
+	cursor: pointer;	
+}
+
+.switch-hall-button-active {
+	scale: 107%;
+
+	background-color: #FFFFFF;
+
+	font-size: 15px;
+	font-weight: 900;
+}
+
+
+.seat-scheme-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 11px 23px;
+	margin: 11px 0;
+}
+
+.legend-text {
+	font-size: 14px;
+	font-weight: 400;
+	color: #848484;
+	align-self: center;
+}
+
+.seat-multiplier {
+	padding-top: 10px;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.seat-scheme-grid-wrapper {
+	position: relative;
+	padding: 64px 0 36px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid #000000;
+	max-width: 90%;
+}
+
+.seat-scheme-grid-wrapper::before {
+	content: 'экран';
+	position: absolute;
+	top: 26px;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 19px;
+}
+
+.seat-scheme-grid {
+	margin: 0 auto;
+	display: grid;
+	gap: 10px;
+}
+
+.seat-scheme-item {
+	width: 26px;
+	height: 26px;
+	border-radius: 4px;
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+}
+
+.seat-scheme-grid>.seat-scheme-item:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.seat-scheme-item-regular {
+	background-color: #C4C4C4;
+	border-color: #393939;
+}
+
+.seat-scheme-item-vip {
+	background-image: repeating-linear-gradient(135deg, #b0d6d8 1px, #0a828a 2px);
+	border-color: #0A828A;
+}
+
+
+
+.admin-sessions-movie-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 12px;
+	margin-bottom: 51px;
+
+	list-style-type: none;
+}
+
+.admin-sessions-movie-list-item {
+	display: flex;
+	gap: 10px;
+
+	width: 255px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	box-sizing: border-box;
+
+	cursor: pointer;
+
+	position: relative;
+}
+
+.admin-sessions-movie-list-item:nth-child(5n+1) {
+	background-color: #CAFF85;
+}
+
+.admin-sessions-movie-list-item:nth-child(5n+2) {
+	background-color: #85FF89;
+}
+
+.admin-sessions-movie-list-item:nth-child(5n+3) {
+	background-color: #85FFD3;
+}
+
+.admin-sessions-movie-list-item:nth-child(5n+4) {
+	background-color: #85E2FF;
+}
+
+.admin-sessions-movie-list-item:nth-child(5n+5) {
+	background-color: #8599FF;
+}
+
+.admin-sessions-movie-image {
+	width: 38px;
+	height: 52px;
+}
+
+.admin-sessions-movie-info {
+	font-size: 14px;
+	color: #000000;
+}
+
+.admin-sessions-movie-title {
+	font-weight: 500;
+}
+
+.admin-sessions-movie-length {
+	font-weight: 400;
+	opacity: 0.7;
+}
+
+.admin-sessions-movie-image {
+	width: 38px;
+	height: 52px;
+}
+
+.admin-sessions-movie-info {
+	font-size: 14px;
+	color: #000000;
+}
+
+.admin-sessions-movie-title {
+	font-weight: 500;
+}
+
+.admin-sessions-movie-length {
+	font-weight: 400;
+	opacity: 0.7;
+}
+
+.admin-delete-button-sessions {
+	position: absolute;
+	background-image: url(../img/remove.png);
+	background-size: contain;
+	bottom: 1px;
+	right: 1px;
+}
+
+.admin-sessions-halls-list {
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+
+	margin-bottom: 31px;
+
+	list-style-type: none;
+}
+
+.admin-sessions-halls-list-item {
+	position: relative;
+}
+
+.admin-sessions-halls-title {
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.admin-sessions-halls-timeline {
+	border: 1px solid #848484;
+	height: 60px;
+	box-sizing: border-box;
+	width: 90%;
+
+	display: flex;
+	flex-direction: row;
+
+	padding: 10px 0;
+
+	position: relative;
+}
+
+.admin-sessions-session-wrapper {
+	height: 35px;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	position: absolute;
+	box-sizing: border-box;
+	width: 90px;
+
+	cursor: pointer;
+}
+
+.admin-sessions-session {
+	overflow: hidden;
+	height: 100%;
+	white-space: nowrap;
+}
+
+.admin-sessions-session-delete {
+	height: 20px;
+	width: 20px;
+	background-image: url(../img/remove.png);
+	background-size: contain;
+	position: absolute;
+
+	left: -25px;
+	top: 40px;
+}
+
+.admin-sessions-session-title {
+	font-size: 10px;
+	font-weight: 400;
+}
+
+.admin-sessions-session-time {
+	font-size: 12px;
+	font-weight: 400;
+	color: #848484;
+
+	position: absolute;
+
+	bottom: -35px;
+	left: -15px;
+}
+
+.admin-sessions-session-time::before {
+	content: '';
+
+	height: 5px;
+	width: 1px;
+	background-color: #848484;
+	position: absolute;
+	bottom: 15px;
+	left: 15px;
+}
+
+.select-sales {
+	margin-top: 29px;
+}
+
+.sales-text {
+	margin: 29px auto;
+	text-align: center;
+}
+
+/* попап */
+
+.popup-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 3;
+
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+	width: 960px;
+	position: relative;
+	z-index: 500;
+	background-color: rgba(234, 233, 235, 0.95);
+}
+
+.popup-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px 42px;
+
+	background-color: #63536C;
+}
+
+.popup-title {
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: 700;
+	color: #FFFFFF;
+}
+
+.popup-close {
+	border: none;
+	border-radius: 0;
+	width: 22px;
+	height: 22px;
+
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../img/cancel.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.popup-close:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.popup-form {
+	display: flex;
+	flex-direction: column;
+
+	padding: 35px 105px;
+}
+
+.popup-label {
+	margin-top: 8px;
+
+	font-size: 12px;
+	font-weight: 400;
+	color: #848484;
+}
+
+.popup-input {
+	padding: 7px 8px;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #B7B7B7;
+	border-radius: 0;
+
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.popup-input-description {
+	height: 80px;
+	resize: none;
+}
+
+.popup-input-select {
+	text-transform: uppercase;
+
+	appearance: none;
+	-webkit-appearance: none;
+
+	background-image: url(../img/select.svg);
+	background-repeat: no-repeat;
+	background-size: 12px 7px;
+	background-position: center right 12px;
+}
+
+.submit-wrapper-popup {
+	margin-top: 42px;
+	display: flex;	
+  	gap: 15px;
+  	flex-wrap: wrap;
+  	align-items: center;
+}
+
+.submit-poster-button {
+	display: none;
+}
+
+
+/* виды для разных сайтов */
+
+@media (max-width: 1024px) {
+	.content-wrapper {
+		padding: 0;
+	}
+
+	.session-info-wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.zoomed-hand {
+		display: flex;
+		padding: 15px;
+		align-items: center;
+	}
+
+	.hint-text {
+		width: 67px;
+		font-size: 14px;
+		font-weight: 300;
+		text-align: center;
+	}
+
+	.hint-icon {
+		width: 24px;
+		height: 32px;
+	}
+
+	.popup-form {
+		padding: 35px 8px;
+	}
+
+	.content-wrapper-admin {
+		padding: 0;
+	}
+}
