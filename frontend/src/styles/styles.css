@@ -49,7 +49,7 @@ label {
 
 /* фон */
 .body-bg {
-	background-image: url(../img/userbg.png);
+	background-image: url(../assets/images/userbg.jpg);
 	background-color: #000000;
 	background-size: cover;
 	background-position: center;
@@ -59,7 +59,7 @@ label {
 
 
 .admin-body-bg {
-	background-image: url(../img/adminbg.png);
+	background-image: url(../assets/images/adminbg.jpg);
 	background-color: #000000;
 	background-size: cover;
 	background-position: center;
@@ -360,7 +360,7 @@ label {
 	gap: 30px;
 
 	background-color: rgba(23, 29, 36, 1);
-	background-image: url(../img/screen.png);
+	background-image: url(../assets/images/screen.png);
 	background-position: top 15px center;
 	background-repeat: no-repeat;
 	background-size: 284px auto;
@@ -472,7 +472,7 @@ label {
 	display: block;
 	height: 3px;
 
-	background-image: url(../img/bottomticketseam.png);
+	background-image: url(../assets/images/bottomticketseam.png);
 }
 
 .payment-header::before {
@@ -485,7 +485,7 @@ label {
 	display: block;
 	height: 3px;
 
-	background-image: url(../img/topticketseam.png);
+	background-image: url(../assets/images/topticketseam.png);
 }
 
 .payment-title {
@@ -515,7 +515,7 @@ label {
 	display: block;
 	height: 3px;
 
-	background-image: url(../img/bottomticketseam.png);
+	background-image: url(../assets/images/bottomticketseam.png);
 }
 
 .ticket-info::before {
@@ -528,7 +528,7 @@ label {
 	display: block;
 	height: 3px;
 
-	background-image: url(../img/topticketseam.png);
+	background-image: url(../assets/imaes/topticketseam.png);
 }
 
 
@@ -696,7 +696,7 @@ label {
 	background-color: #63536C;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: url(../img/arrowdown.png);
+	background-image: url(../assets/icons/arrowdown.png);
 }
 
 .section-text {
@@ -808,7 +808,7 @@ label {
 	border: none;
 	border-radius: 3px;
 	background-color: #FFFFFF;
-	background-image: url(../img/cancel.png);
+	background-image: url(../assets/icons/cancel.png);
 	background-size: 24px 12px;
 	background-position: top 4px left 5px;
 	background-repeat: no-repeat;
@@ -826,7 +826,7 @@ label {
 .admin-delete-button-halls {
 	height: 20px;
 	width: 20px;
-	background-image: url(../img/remove.png);
+	background-image: url(../assets/icons/remove.png);
 	background-size: contain;
 	border: none;
 	left: -25px;
@@ -1052,7 +1052,7 @@ label {
 
 .admin-delete-button-sessions {
 	position: absolute;
-	background-image: url(../img/remove.png);
+	background-image: url(../assets/icons/remove.png);
 	background-size: contain;
 	bottom: 1px;
 	right: 1px;
@@ -1112,7 +1112,7 @@ label {
 .admin-sessions-session-delete {
 	height: 20px;
 	width: 20px;
-	background-image: url(../img/remove.png);
+	background-image: url(../assets/icons/remove.png);
 	background-size: contain;
 	position: absolute;
 
@@ -1204,7 +1204,7 @@ label {
 	height: 22px;
 
 	background-color: rgba(0, 0, 0, 0);
-	background-image: url(../img/cancel.png);
+	background-image: url(../assets/icons/cancel.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -1251,7 +1251,7 @@ label {
 	appearance: none;
 	-webkit-appearance: none;
 
-	background-image: url(../img/select.svg);
+	background-image: url(../assets/icons/select.svg);
 	background-repeat: no-repeat;
 	background-size: 12px 7px;
 	background-position: center right 12px;
