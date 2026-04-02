@@ -1,41 +1,70 @@
-from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from django.contrib.auth import get_user_model, authenticate, login, logout
+from rest_framework.permissions import AllowAny
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 
 User = get_user_model()
 
-@api_view(['POST'])
-def register(request):
-    serializer = UserSerializer(data=request.data)
-    if serializer.is_valid():
-        user = serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['POST'])
-def user_login(request):
-    username = request.data.get('username')
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def admin_login(request):
+    """Только для админов - вход в админ-панель"""
+    username = request.data.get('login')  # Принимаем 'login' как в старом коде
     password = request.data.get('password')
     
+    if not username or not password:
+        return Response({
+            'success': False,
+            'error': 'Логин и пароль обязательны'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Аутентификация пользователя
     user = authenticate(request, username=username, password=password)
     
     if user is not None:
-        login(request, user)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
-    return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        # Проверяем, является ли пользователь админом
+        if user.is_admin or user.is_staff or user.is_superuser:
+            login(request, user)
+            return Response({
+                'success': True,
+                'message': 'Вход выполнен успешно',
+                'user': {
+                    'id': user.id,
+                    'username': user.username,
+                    'is_admin': user.is_admin or user.is_staff
+                }
+            })
+        else:
+            return Response({
+                'success': False,
+                'error': 'Доступ запрещен. Только для администраторов.'
+            }, status=status.HTTP_403_FORBIDDEN)
+    else:
+        return Response({
+            'success': False,
+            'error': 'Неверный логин или пароль'
+        }, status=status.HTTP_401_UNAUTHORIZED)
 
-@api_view(['POST'])
-def user_logout(request):
+@api_view(['GET', 'POST'])
+def admin_logout(request):
+    """Выход из админ-панели"""
     logout(request)
-    return Response({'message': 'Logged out successfully'})
+    return Response({
+        'success': True,
+        'message': 'Выход выполнен успешно'
+    })
 
 @api_view(['GET'])
-def get_user(request):
-    if request.user.is_authenticated:
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
-    return Response({'error': 'Not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
+def check_admin_status(request):
+    """Проверка статуса админа"""
+    if request.user.is_authenticated and (request.user.is_admin or request.user.is_staff or request.user.is_superuser):
+        return Response({
+            'is_admin': True,
+            'username': request.user.username
+        })
+    return Response({
+        'is_admin': False
+    }, status=status.HTTP_401_UNAUTHORIZED)
