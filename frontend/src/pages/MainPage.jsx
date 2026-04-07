@@ -6,9 +6,9 @@ import MovieList from '../components/MovieList';
 const MainPage = () => {
   return (
     <div className="content-wrapper">
-        <Header />
-        <Calendar />
-        <MovieList />
+      <Header />
+      <Calendar />
+      <MovieList />
     </div>
   );
 };

@@ -15,12 +15,17 @@ export const fetchSessions = async () => {
   return response.data;
 };
 
-// Получить все данные одним запросом (как old allData.getData)
+// Единый метод для получения всех данных
 export const fetchAllData = async () => {
-  const [movies, halls, sessions] = await Promise.all([
-    fetchMovies(),
-    fetchHalls(),
-    fetchSessions(),
-  ]);
-  return { movies, halls, sessions };
+  try {
+    const [movies, halls, sessions] = await Promise.all([
+      fetchMovies(),
+      fetchHalls(),
+      fetchSessions(),
+    ]);
+    return { movies, halls, sessions };
+  } catch (error) {
+    console.error('API Error:', error);
+    throw new Error('Не удалось загрузить данные. Проверьте соединение с сервером.');
+  }
 };

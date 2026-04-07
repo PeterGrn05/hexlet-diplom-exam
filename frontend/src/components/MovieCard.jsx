@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
   const navigate = useNavigate();
 
-  // Группируем сеансы по залам
   const sessionsByHall = sessions.reduce((acc, sess) => {
     if (!acc[sess.hall]) acc[sess.hall] = [];
     acc[sess.hall].push(sess);
@@ -37,14 +36,15 @@ const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
         {Object.entries(sessionsByHall).map(([hallId, hallSessions]) => {
           const hall = halls.find(h => h.id === hallId);
           if (!hall) return null;
-          const sorted = [...hallSessions].sort((a,b) => a.start_time.localeCompare(b.start_time));
+          const sorted = [...hallSessions].sort((a, b) => a.start_time.localeCompare(b.start_time));
           return (
             <div key={hallId} className="movie-halls" data-id={hallId}>
               <h3 className="movie-halls-title">{hall.name}</h3>
               <ul className="movie-halls-times">
                 {sorted.map(sess => {
-                  const time = new Date(sess.start_time).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-                  const isDisabled = false; // добавить логику проверки прошедшего времени
+                  const time = new Date(sess.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                  // проверка на прошедшее время (можно добавить)
+                  const isDisabled = false;
                   return (
                     <li
                       key={sess.id}
