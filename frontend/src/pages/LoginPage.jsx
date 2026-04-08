@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+
 const LoginPage = () => {
   const [loginValue, setLoginValue] = useState('');
   const [password, setPassword] = useState('');
@@ -13,9 +14,7 @@ const LoginPage = () => {
   // Добавляем админский фон при монтировании
   useEffect(() => {
     document.body.classList.add('admin-body-bg');
-    return () => {
-      document.body.classList.remove('admin-body-bg');
-    };
+    return () => document.body.classList.remove('admin-body-bg');
   }, []);
 
   const handleSubmit = async (e) => {
