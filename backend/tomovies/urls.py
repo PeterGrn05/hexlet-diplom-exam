@@ -10,4 +10,6 @@ urlpatterns = [
     path('sessions/<int:pk>/', views.session_detail, name='session-detail'),
     path('prices/', views.price_list, name='price-list'),
     path('prices/<int:pk>/', views.price_detail, name='price-detail'),
+    path('halls/<int:pk>/config/', views.hall_config, name='hall-config'),
+    path('halls/<int:pk>/prices/', views.hall_prices, name='hall-prices'),
 ]

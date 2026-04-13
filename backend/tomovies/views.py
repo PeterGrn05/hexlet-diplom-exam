@@ -140,3 +140,34 @@ def price_detail(request, pk):
     elif request.method == 'DELETE':
         price.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+@api_view(['GET', 'POST'])
+def hall_config(request, pk):
+    hall = get_object_or_404(Hall, pk=pk)
+    if request.method == 'GET':
+        return Response({
+            'config': hall.hall_config,
+            'rows': len(hall.hall_config) if hall.hall_config else 0,
+            'cols': len(hall.hall_config[0]) if hall.hall_config and hall.hall_config[0] else 0
+        })
+    elif request.method == 'POST':
+        # Ожидаем: { "config": [[...], ...], "rows": int, "cols": int }
+        data = request.data
+        hall.hall_config = data.get('config', [])
+        hall.save()
+        return Response({'status': 'ok', 'config': hall.hall_config})
+
+@api_view(['GET', 'POST'])
+def hall_prices(request, pk):
+    hall = get_object_or_404(Hall, pk=pk)
+    if request.method == 'GET':
+        return Response({
+            'price_standard': hall.hall_price_standard,
+            'price_vip': hall.hall_price_vip
+        })
+    elif request.method == 'POST':
+        hall.hall_price_standard = request.data.get('price_standard', 0)
+        hall.hall_price_vip = request.data.get('price_vip', 0)
+        hall.save()
+        return Response({'status': 'ok'})
