@@ -26,7 +26,9 @@ export const AuthProvider = ({ children }) => {
                 }
             } catch (err) {
                 // 401 - просто не авторизован, не выводим ошибку в консоль
-                console.debug('Not authenticated');
+                if (err.response?.status !== 401) {
+                    console.error('Auth check error:', err);
+                }
             } finally {
                 setLoading(false);
             }

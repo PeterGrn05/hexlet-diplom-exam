@@ -73,6 +73,46 @@ def hall_detail(request, pk):
         hall.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+@api_view(['GET', 'POST'])
+def hall_config(request, pk):
+    hall = get_object_or_404(Hall, pk=pk)
+    if request.method == 'GET':
+        return Response({
+            'config': hall.hall_config,
+            'rows': len(hall.hall_config) if hall.hall_config else 0,
+            'cols': len(hall.hall_config[0]) if hall.hall_config and hall.hall_config[0] else 0
+        })
+    elif request.method == 'POST':
+        config = request.data.get('config', [])
+        hall.hall_config = config
+        hall.save()
+        return Response({'status': 'ok', 'config': hall.hall_config})
+
+@api_view(['GET', 'POST'])
+def hall_prices(request, pk):
+    hall = get_object_or_404(Hall, pk=pk)
+    if request.method == 'GET':
+        return Response({
+            'price_standard': hall.hall_price_standard,
+            'price_vip': hall.hall_price_vip
+        })
+    elif request.method == 'POST':
+        hall.hall_price_standard = request.data.get('price_standard', 0)
+        hall.hall_price_vip = request.data.get('price_vip', 0)
+        hall.save()
+        return Response({'status': 'ok'})
+    
+@api_view(['GET', 'POST'])
+def hall_toggle_sales(request, pk):
+    hall = get_object_or_404(Hall, pk=pk)
+    if request.method == 'GET':
+        return Response({'is_open': hall.is_open})
+    elif request.method == 'POST':
+        # Ожидаем { "is_open": true/false }
+        hall.is_open = request.data.get('is_open', hall.is_open)
+        hall.save()
+        return Response({'is_open': hall.is_open})
+
 # Session views
 @api_view(['GET', 'POST'])
 def session_list(request):

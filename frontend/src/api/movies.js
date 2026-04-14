@@ -29,3 +29,25 @@ export const fetchAllData = async () => {
     throw new Error('Не удалось загрузить данные. Проверьте соединение с сервером.');
   }
 };
+
+export const createMovie = async (formData) => {
+  const response = await axios.post('/movies/', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  return response.data;
+};
+
+export const deleteMovie = async (movieId) => {
+  const response = await axios.delete(`/movies/${movieId}/`);
+  return response.data;
+};
+
+export const createSession = async (sessionData) => {
+  const response = await axios.post('/movies/sessions/', sessionData);
+  return response.data;
+};
+
+export const deleteSession = async (sessionId) => {
+  const response = await axios.delete(`/movies/sessions/${sessionId}/`);
+  return response.data;
+};

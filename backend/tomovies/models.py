@@ -7,7 +7,7 @@ class Movie(models.Model):
     genre = models.CharField("Genre", max_length=100)
     description = models.CharField(max_length=1000)
     duration = models.CharField("Duration", max_length=50)
-    poster = models.CharField("URL", max_length=512)
+    poster = models.ImageField(upload_to='posters/', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -17,6 +17,7 @@ class Hall(models.Model):
     hall_config = models.JSONField(default=list, blank=True)
     hall_price_standard = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     hall_price_vip = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    is_open = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

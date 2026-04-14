@@ -37,3 +37,13 @@ export const saveHallPrices = async (hallId, priceStandard, priceVip) => {
   });
   return response.data;
 };
+
+export const fetchHallSalesStatus = async (hallId) => {
+  const response = await axios.get(`/movies/halls/${hallId}/toggle-sales/`);
+  return response.data;
+};
+
+export const toggleHallSales = async (hallId, isOpen) => {
+  const response = await axios.post(`/movies/halls/${hallId}/toggle-sales/`, { is_open: isOpen });
+  return response.data;
+};
