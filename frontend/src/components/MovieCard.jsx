@@ -19,6 +19,14 @@ const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
     navigate('/booking');
   };
 
+  // Проверка, не прошёл ли уже сеанс
+  const isDisabled = (session) => {
+    const now = new Date();
+    const sessionDateTime = new Date(session.start_time);
+    const todayStr = new Date().toISOString().split('T')[0];
+    return selectedDate === todayStr && sessionDateTime < now;
+  };
+
   return (
     <article className="movie">
       <div className="movie-info">
@@ -34,7 +42,7 @@ const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
       </div>
       <div className="movie-schedule">
         {Object.entries(sessionsByHall).map(([hallId, hallSessions]) => {
-          const hall = halls.find(h => h.id === hallId);
+          const hall = halls.find(h => h.id === parseInt(hallId));
           if (!hall) return null;
           const sorted = [...hallSessions].sort((a, b) => a.start_time.localeCompare(b.start_time));
           return (
@@ -43,13 +51,12 @@ const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
               <ul className="movie-halls-times">
                 {sorted.map(sess => {
                   const time = new Date(sess.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                  // проверка на прошедшее время (можно добавить)
-                  const isDisabled = false;
+                  const disabled = isDisabled(sess);
                   return (
                     <li
                       key={sess.id}
-                      className={`movie-halls-time ${isDisabled ? 'movie-halls-time-disabled' : ''}`}
-                      onClick={() => !isDisabled && handleSeanceClick(sess.id, hall.id, time)}
+                      className={`movie-halls-time ${disabled ? 'movie-halls-time-disabled' : ''}`}
+                      onClick={() => !disabled && handleSeanceClick(sess.id, hall.id, time)}
                     >
                       {time}
                     </li>

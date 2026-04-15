@@ -11,9 +11,19 @@ const MovieList = () => {
   if (isLoading) return <Loader />;
   if (error) return <ErrorMessage message={error} />;
 
-  // Фильтруем фильмы, у которых есть сеансы (хоть один)
+  // Фильтруем сеансы по выбранной дате
+  const filteredSessions = sessions.filter(session => {
+    const sessionDate = new Date(session.start_time);
+    const [year, month, day] = selectedDate.split('-').map(Number);
+    const selected = new Date(year, month - 1, day);
+    return sessionDate.getFullYear() === selected.getFullYear() &&
+      sessionDate.getMonth() === selected.getMonth() &&
+      sessionDate.getDate() === selected.getDate();
+  });
+
+  // Фильмы, у которых есть хотя бы один сеанс на выбранную дату
   const moviesWithSessions = movies.filter(movie =>
-    sessions.some(s => s.movie === movie.id)
+    filteredSessions.some(s => s.movie === movie.id)
   );
 
   if (moviesWithSessions.length === 0) {
@@ -23,7 +33,7 @@ const MovieList = () => {
   return (
     <main className="client-index">
       {moviesWithSessions.map(movie => {
-        const movieSessions = sessions.filter(s => s.movie === movie.id);
+        const movieSessions = filteredSessions.filter(s => s.movie === movie.id);
         return (
           <MovieCard
             key={movie.id}
