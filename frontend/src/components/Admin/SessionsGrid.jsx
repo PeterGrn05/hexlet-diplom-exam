@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import AddMoviePopup from '../../components/Admin/MoviePopup';
-import AddSessionPopup from '../../components/Admin/SessionsPopup';
+import AddMoviePopup from './MoviePopup';
+import AddSessionPopup from './SessionsPopup';
 import { fetchMovies, fetchHalls, fetchSessions, deleteMovie, deleteSession } from '../../api/movies';
 
 

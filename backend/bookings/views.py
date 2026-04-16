@@ -47,3 +47,11 @@ def confirm_booking(request, pk):
     booking.save()
     serializer = BookingSerializer(booking)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def bookings_by_session(request, session_id):
+    bookings = Booking.objects.filter(session_id=session_id)
+    taken_seats = []
+    for booking in bookings:
+        taken_seats.extend(booking.seats)
+    return Response(taken_seats)

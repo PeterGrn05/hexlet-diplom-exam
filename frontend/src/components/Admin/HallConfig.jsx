@@ -10,12 +10,10 @@ const HallConfig = () => {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  // Загрузка списка залов
   useEffect(() => {
     fetchHalls().then(setHalls).catch(console.error);
   }, []);
 
-  // При смене зала загружаем его конфигурацию
   useEffect(() => {
     if (!activeHallId) return;
     setLoading(true);
@@ -35,7 +33,6 @@ const HallConfig = () => {
       .finally(() => setLoading(false));
   }, [activeHallId]);
 
-  // Изменение количества рядов/мест (перестраиваем схему с типом 'standard')
   const rebuildConfig = (newRows, newCols) => {
     const newConfig = [];
     for (let i = 0; i < newRows; i++) {
@@ -50,7 +47,6 @@ const HallConfig = () => {
     setCols(newCols);
   };
 
-  // Обработчик клика по месту для смены типа
   const toggleSeatType = (rowIdx, colIdx) => {
     const newConfig = [...config];
     const current = newConfig[rowIdx][colIdx];
@@ -60,7 +56,6 @@ const HallConfig = () => {
     setConfig(newConfig);
   };
 
-  // Сохранение конфигурации
   const handleSave = async () => {
     if (!activeHallId) return;
     setSaving(true);

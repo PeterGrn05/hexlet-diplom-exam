@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchHalls, createHall, deleteHall } from '../../api/halls';
-import AddHallPopup from '../../components/Admin/HallPopup';
+import AddHallPopup from './HallPopup';
 
 const HallsManagement = () => {
   const [halls, setHalls] = useState([]);

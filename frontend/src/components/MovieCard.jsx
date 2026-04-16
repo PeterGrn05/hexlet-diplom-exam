@@ -10,7 +10,8 @@ const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
     return acc;
   }, {});
 
-  const handleSeanceClick = (seanceId, hallId, time) => {
+  const handleSeanceClick = (seanceId, hallId, time, hallName) => {
+    localStorage.setItem('hallTitle', hallName);
     localStorage.setItem('seanceId', seanceId);
     localStorage.setItem('seanceHallId', hallId);
     localStorage.setItem('seanceTime', time);

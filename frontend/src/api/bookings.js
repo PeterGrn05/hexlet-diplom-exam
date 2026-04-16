@@ -5,8 +5,14 @@ export const createBooking = async (bookingData) => {
   return response.data;
 };
 
-export const getHallConfig = async (seanceId, date) => {
-  // Если у вас есть эндпоинт для конфигурации зала с учётом даты
-  const response = await axios.get(`/movies/halls/config/?seanceId=${seanceId}&date=${date}`);
+// Получить занятые места для сеанса
+export const getTakenSeats = async (sessionId) => {
+  const response = await axios.get(`/bookings/by-session/${sessionId}/`);
+  return response.data;
+};
+
+// Получить конфигурацию зала (через halls)
+export const getHallConfigById = async (hallId) => {
+  const response = await axios.get(`/movies/halls/${hallId}/config/`);
   return response.data;
 };
