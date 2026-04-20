@@ -11,21 +11,29 @@ User = get_user_model()
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
 def admin_login(request):
-    """Только для админов - вход в админ-панель"""
-    username = request.data.get('login')  # Принимаем 'login' как в старом коде
+    login_value = request.data.get('login')
     password = request.data.get('password')
     
-    if not username or not password:
+    if not login_value or not password:
         return Response({
             'success': False,
             'error': 'Логин и пароль обязательны'
         }, status=status.HTTP_400_BAD_REQUEST)
     
-    # Аутентификация пользователя
-    user = authenticate(request, username=username, password=password)
+    # Пытаемся найти пользователя по email или username
+    user = None
+    try:
+        # Сначала по email (без учета регистра)
+        user = User.objects.get(email__iexact=login_value)
+    except User.DoesNotExist:
+        try:
+            # Затем по username
+            user = User.objects.get(username=login_value)
+        except User.DoesNotExist:
+            pass
     
-    if user is not None:
-        # Проверяем, является ли пользователь админом
+    # Проверяем пароль, если пользователь найден
+    if user and user.check_password(password):
         if user.is_admin or user.is_staff or user.is_superuser:
             login(request, user)
             return Response({

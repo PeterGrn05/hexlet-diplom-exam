@@ -43,13 +43,13 @@ const LoginPage = () => {
           <h3 className="login-title">Авторизация</h3>
         </header>
         <form className="login-form" onSubmit={handleSubmit}>
-          <label htmlFor="email" className="email-label login-label">E-mail</label>
+          <label htmlFor="email" className="email-label login-label">Логин или E-mail</label>
           <input
             type="text"
             className="email-input login-input"
             id="email"
             name="login"
-            placeholder="example@domain.xyz"
+            placeholder="username / example@domain.xyz"
             value={loginValue}
             onChange={(e) => setLoginValue(e.target.value)}
             required
