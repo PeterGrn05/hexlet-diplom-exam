@@ -13,7 +13,6 @@ import AdminPage from './pages/Admin/AdminPage';
 
 function App() {
   return (
-    <div className='body-bg'>
       <AuthProvider>
         <AppProvider>
           <BrowserRouter>
@@ -34,7 +33,6 @@ function App() {
           </BrowserRouter>
         </AppProvider>
       </AuthProvider>
-    </div>
   );
 }
 
