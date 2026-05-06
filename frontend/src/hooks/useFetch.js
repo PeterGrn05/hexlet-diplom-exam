@@ -29,8 +29,8 @@ export const useFetch = (fetchFunction, dependencies = []) => {
     return () => {
       isMounted.current = false;
     };
-  // Добавляем fetchFunction в зависимости, но чтобы избежать бесконечных вызовов,
-  // оберните fetchFunction в useCallback в родителе (см. пояснение ниже)
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchFunction, ...dependencies]);
 
   return { data, isLoading, error };
