@@ -57,7 +57,7 @@ const MovieCard = ({ movie, sessions, halls, selectedDate }) => {
                     <li
                       key={sess.id}
                       className={`movie-halls-time ${disabled ? 'movie-halls-time-disabled' : ''}`}
-                      onClick={() => !disabled && handleSeanceClick(sess.id, hall.id, time)}
+                      onClick={() => !disabled && handleSeanceClick(sess.id, hall.id, time, hall.name)}
                     >
                       {time}
                     </li>

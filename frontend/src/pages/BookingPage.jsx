@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import { getHallConfigById, getTakenSeats } from '../api/bookings';
+import hintIcon from '../assets/icons/hint.png'
 
 const BookingPage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ const BookingPage = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [hallPrices, setHallPrices] = useState({ standard: 0, vip: 0 });
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      document.body.classList.add('body-bg');
+      return () => document.body.classList.remove('body-bg');
+    }, []);
 
   useEffect(() => {
     if (!hallId || !seanceId) {
@@ -88,7 +94,7 @@ const BookingPage = () => {
             <p className="session-hall">{localStorage.getItem('hallTitle') || 'Зал'}</p>
           </div>
           <div className="zoomed-hand">
-            <img src="/img/hint.png" alt="" className="hint-icon" />
+            <img src={hintIcon} alt="" className="hint-icon" />
             <p className="hint-text">Тапните дважды, чтобы увеличить</p>
           </div>
         </div>
