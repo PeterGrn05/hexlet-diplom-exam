@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddMoviePopup from './MoviePopup';
 import AddSessionPopup from './SessionsPopup';
-import { fetchMovies, fetchHalls, fetchSessions, deleteMovie, deleteSession } from '../../api/movies';
+import { fetchMovies, fetchHalls, fetchSessions, deleteMovie, deleteSession, getPosterUrl } from '../../api/movies';
 
 
 const SessionsGrid = () => {
@@ -170,7 +170,7 @@ const SessionsGrid = () => {
               onDragEnd={handleMovieDragEnd}
             >
               <img
-                src={movie.poster || '/placeholder.png'}
+                src={getPosterUrl(movie.poster)}
                 alt={movie.name}
                 className="admin-sessions-movie-image"
               />

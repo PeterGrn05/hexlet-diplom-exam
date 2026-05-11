@@ -51,3 +51,9 @@ export const deleteSession = async (sessionId) => {
   const response = await axios.delete(`/movies/sessions/${sessionId}/`);
   return response.data;
 };
+
+export const getPosterUrl = (posterPath) => {
+  if (!posterPath) return '/placeholder.png';
+  if (posterPath.startsWith('http')) return posterPath;
+  return `http://127.0.0.1:8000${posterPath}`;
+};

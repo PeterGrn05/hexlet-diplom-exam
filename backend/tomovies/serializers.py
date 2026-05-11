@@ -2,16 +2,10 @@ from rest_framework import serializers
 from .models import Movie, Hall, Session, Price
 
 class MovieSerializer(serializers.ModelSerializer):
-    poster = serializers.SerializerMethodField()
-
     class Meta:
         model = Movie
-        fields = '__all__'
+        fields = '__all__'  # включает poster как ImageField
 
-    def get_poster(self, obj):
-        if obj.poster:
-            return obj.poster.url  # вернёт '/media/posters/filename.jpg'
-        return None
 
 class HallSerializer(serializers.ModelSerializer):
     class Meta:
