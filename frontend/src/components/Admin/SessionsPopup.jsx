@@ -33,15 +33,22 @@ const AddSessionPopup = ({ isOpen, onClose, onSessionAdded, preSelectedMovieId }
     }
     setLoading(true);
     try {
+      const now = new Date();
+      const [hours, minutes] = formData.start_time.split(':');
+      now.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
+      
+      const dateTimeISO = now.toISOString();
+      
       const newSession = await createSession({
         hall: formData.hall,
         movie: formData.movie,
-        start_time: formData.start_time
+        start_time: dateTimeISO
       });
       onSessionAdded(newSession);
       onClose();
       setFormData({ hall: '', movie: '', start_time: '' });
     } catch (err) {
+      console.error(err);
       alert('Ошибка добавления сеанса');
     } finally {
       setLoading(false);
@@ -70,8 +77,8 @@ const AddSessionPopup = ({ isOpen, onClose, onSessionAdded, preSelectedMovieId }
             {movies.map(movie => <option key={movie.id} value={movie.id}>{movie.name}</option>)}
           </select>
 
-          <label htmlFor="time-select" className="popup-label">Дата и время</label>
-          <input type="datetime-local" className="popup-input" id="time-select" name="start_time" value={formData.start_time} onChange={handleChange} required />
+          <label htmlFor="time-select" className="popup-label">Время начала</label>
+          <input type="time" className="popup-input" id="time-select" name="start_time" value={formData.start_time} onChange={handleChange} required />
 
           <div className="submit-wrapper-popup">
             <button type="submit" className="button admin-button" disabled={loading}>{loading ? 'Добавление...' : 'Добавить сеанс'}</button>

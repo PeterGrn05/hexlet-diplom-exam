@@ -11,15 +11,7 @@ const MovieList = () => {
   if (isLoading) return <Loader />;
   if (error) return <ErrorMessage message={error} />;
 
-  // Фильтруем сеансы по выбранной дате
-  const filteredSessions = sessions.filter(session => {
-    const sessionDate = new Date(session.start_time);
-    const [year, month, day] = selectedDate.split('-').map(Number);
-    const selected = new Date(year, month - 1, day);
-    return sessionDate.getFullYear() === selected.getFullYear() &&
-      sessionDate.getMonth() === selected.getMonth() &&
-      sessionDate.getDate() === selected.getDate();
-  });
+  const filteredSessions = sessions;
 
   // Фильмы, у которых есть хотя бы один сеанс на выбранную дату
   const moviesWithSessions = movies.filter(movie =>
